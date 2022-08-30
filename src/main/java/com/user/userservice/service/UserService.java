@@ -1,6 +1,6 @@
 package com.user.userservice.service;
 
-import com.user.userservice.entity.User;
+import com.user.userservice.entity.UserEntity;
 import com.user.userservice.repository.UserRepository;
 import com.user.userservice.valueobject.Department;
 import com.user.userservice.valueobject.ResponseTemplateVO;
@@ -17,7 +17,7 @@ public class UserService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public User saveUser(User user) {
+    public UserEntity saveUser(UserEntity user) {
         log.info("Inside saveUser of UserController");
         return userRepository.save(user);
     }
@@ -25,7 +25,7 @@ public class UserService {
     public ResponseTemplateVO getUserWithDepartment(Long userId) {
         log.info("Inside getUserWithDepartment of UserController");
         ResponseTemplateVO vo = new ResponseTemplateVO();
-        User user = userRepository.findByUserId(userId);
+        UserEntity user = userRepository.findByUserId(userId);
         Department department = restTemplate.
                 getForObject("http://localhost:8001/departments/" + user.getDepartmentId(), Department.class);
         vo.setUser(user);

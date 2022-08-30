@@ -1,6 +1,6 @@
 package com.user.userservice.controller;
 
-import com.user.userservice.entity.User;
+import com.user.userservice.entity.UserEntity;
 import com.user.userservice.service.UserService;
 import com.user.userservice.valueobject.ResponseTemplateVO;
 import lombok.extern.slf4j.Slf4j;
@@ -15,11 +15,11 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/")
-    public User saveUser(@RequestBody User user) {
+    public UserEntity saveUser(@RequestBody UserEntity user) {
         log.info("Inside saveUser of UserController");
         return userService.saveUser(user);
     }
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     public ResponseTemplateVO getUserWithDepartment(Long userId){
         log.info("Inside getUserWithDepartment of UserController");
         return userService.getUserWithDepartment(userId);

@@ -1,6 +1,6 @@
 package com.user.userservice.valueobject;
 
-import com.user.userservice.entity.User;
+import com.user.userservice.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResponseTemplateVO {
-    private User user;
+    private UserEntity user;
     private Department department;
 }

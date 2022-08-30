@@ -1,10 +1,10 @@
 package com.user.userservice.repository;
 
-import com.user.userservice.entity.User;
+import com.user.userservice.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-    User findByUserId(Long userId);
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
+    UserEntity findByUserId(Long userId);
 }
