@@ -26,8 +26,13 @@ public class UserService {
         log.info("Inside getUserWithDepartment of UserController");
         ResponseTemplateVO vo = new ResponseTemplateVO();
         UserEntity user = userRepository.findByUserId(userId);
+        /**
+         * Replaced localhost with application as defined in eureka server.
+         * It helps us to get rid of from the port number and host details.
+         * It is convenient also when we have large number of microservices to connect using REST.
+         */
         Department department = restTemplate.
-                getForObject("http://localhost:8001/departments/" + user.getDepartmentId(), Department.class);
+                getForObject("http://DEPARTMENT-SERVICE/departments/" + user.getDepartmentId(), Department.class);
         vo.setUser(user);
         vo.setDepartment(department);
         return vo;
